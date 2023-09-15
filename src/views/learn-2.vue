@@ -230,7 +230,7 @@ watch(threeRef, (val) => {
     neptuneGroup.rotation.y += 0.003;
   }
 
-  function animation(time: number) {
+  function animation() {
     rotation();
     revolution();
     // 更新控制器
