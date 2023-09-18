@@ -25,6 +25,10 @@ watch(threeRef, (val) => {
   val.appendChild(renderer.domElement)
   const control = new OrbitControls(camera, renderer.domElement);
 
+  // 添加环境光
+  const light = new THREE.AmbientLight( 0x404040 ); // 柔和的白光
+  scene.add( light );
+
   // 添加太阳纹理
   const sunTexture = new THREE.TextureLoader().load('images/2k_sun.jpg');
   const sunMaterial = new THREE.MeshBasicMaterial({map: sunTexture});
