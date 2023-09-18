@@ -26,7 +26,7 @@ watch(threeRef, (val) => {
   const control = new OrbitControls(camera, renderer.domElement);
 
   // 添加太阳纹理
-  const sunTexture = new THREE.TextureLoader().load('/public/2k_sun.jpg');
+  const sunTexture = new THREE.TextureLoader().load('2k_sun.jpg');
   const sunMaterial = new THREE.MeshBasicMaterial({map: sunTexture});
   // 添加太阳
   const sunMesh = new THREE.Mesh(
@@ -45,7 +45,7 @@ watch(threeRef, (val) => {
   mercuryGroup.position.set(0, 0, 0);
   scene.add(mercuryGroup);
   // 添加水星纹理
-  const mercuryTexture = new THREE.TextureLoader().load('/public/2k_mercury.jpg');
+  const mercuryTexture = new THREE.TextureLoader().load('2k_mercury.jpg');
   const mercuryMaterial = new THREE.MeshPhongMaterial({map: mercuryTexture});
   // 添加水星
   const mercuryMesh = new THREE.Mesh(
@@ -62,7 +62,7 @@ watch(threeRef, (val) => {
   scene.add(venusGroup);
 
   // 添加金星纹理
-  const venusTexture = new THREE.TextureLoader().load('/public/2k_venus_surface.jpg');
+  const venusTexture = new THREE.TextureLoader().load('2k_venus_surface.jpg');
   const venusMaterial = new THREE.MeshPhongMaterial({map: venusTexture});
   // 添加金星
   const venusMesh = new THREE.Mesh(
@@ -78,7 +78,7 @@ watch(threeRef, (val) => {
   scene.add(earthGroup);
 
   // 添加地球纹理
-  const earthTexture = new THREE.TextureLoader().load('/public/2k_earth_daymap.jpg');
+  const earthTexture = new THREE.TextureLoader().load('2k_earth_daymap.jpg');
   const earthMaterial = new THREE.MeshPhongMaterial({map: earthTexture});
   // 添加地球
   const earthMesh = new THREE.Mesh(
@@ -96,7 +96,7 @@ watch(threeRef, (val) => {
 
 
   // 添加月球纹理
-  const moonTexture = new THREE.TextureLoader().load('/public/2k_moon.jpg');
+  const moonTexture = new THREE.TextureLoader().load('2k_moon.jpg');
   const moonMaterial = new THREE.MeshPhongMaterial({map: moonTexture});
   // 添加月球
   const moonMesh = new THREE.Mesh(
@@ -112,7 +112,7 @@ watch(threeRef, (val) => {
   scene.add(marsGroup);
 
   // 添加火星纹理
-  const marsTexture = new THREE.TextureLoader().load('/public/2k_mars.jpg');
+  const marsTexture = new THREE.TextureLoader().load('2k_mars.jpg');
   const marsMaterial = new THREE.MeshPhongMaterial({map: marsTexture});
   // 添加火星
   const marsMesh = new THREE.Mesh(
@@ -128,7 +128,7 @@ watch(threeRef, (val) => {
   scene.add(jupiterGroup);
 
   // 添加木星纹理
-  const jupiterTexture = new THREE.TextureLoader().load('/public/2k_jupiter.jpg');
+  const jupiterTexture = new THREE.TextureLoader().load('2k_jupiter.jpg');
   const jupiterMaterial = new THREE.MeshPhongMaterial({map: jupiterTexture});
   // 添加木星
   const jupiterMesh = new THREE.Mesh(
@@ -144,7 +144,7 @@ watch(threeRef, (val) => {
   scene.add(saturnGroup);
 
   // 添加土星纹理
-  const saturnTexture = new THREE.TextureLoader().load('/public/2k_saturn.jpg');
+  const saturnTexture = new THREE.TextureLoader().load('2k_saturn.jpg');
   const saturnMaterial = new THREE.MeshPhongMaterial({map: saturnTexture});
   // 添加土星
   const saturnMesh = new THREE.Mesh(
@@ -155,7 +155,7 @@ watch(threeRef, (val) => {
   saturnGroup.add(saturnMesh);
 
   // 添加土星环
-  const saturnRingTexture = new THREE.TextureLoader().load('/public/2k_saturn_ring_alpha.png');
+  const saturnRingTexture = new THREE.TextureLoader().load('2k_saturn_ring_alpha.png');
   const saturnRingMaterial = new THREE.MeshPhongMaterial({
     map: saturnRingTexture,
     side: THREE.DoubleSide,
@@ -176,7 +176,7 @@ watch(threeRef, (val) => {
   scene.add(uranusGroup);
 
   // 添加天王星纹理
-  const uranusTexture = new THREE.TextureLoader().load('/public/2k_uranus.jpg');
+  const uranusTexture = new THREE.TextureLoader().load('2k_uranus.jpg');
   const uranusMaterial = new THREE.MeshPhongMaterial({map: uranusTexture});
   // 添加天王星
   const uranusMesh = new THREE.Mesh(
@@ -192,7 +192,7 @@ watch(threeRef, (val) => {
   scene.add(neptuneGroup);
 
   // 添加海王星纹理
-  const neptuneTexture = new THREE.TextureLoader().load('/public/2k_neptune.jpg');
+  const neptuneTexture = new THREE.TextureLoader().load('2k_neptune.jpg');
   const neptuneMaterial = new THREE.MeshPhongMaterial({map: neptuneTexture});
   // 添加海王星
   const neptuneMesh = new THREE.Mesh(
