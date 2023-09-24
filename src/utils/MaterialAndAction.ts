@@ -214,11 +214,7 @@ export const addMaterialAndAction = (
   }
 
   let outer = null
-  // let outerHelp = null
-  // let objHelp = null
   if (obj.name.includes('Door')) {
-    // let box = new THREE.Box3().setFromObject(obj)
-    // let modelX = Math.abs(box.max.x) + Math.abs(box.min.x) // 获取模型的长度
     switch (obj.name) {
       case 'LBDoor':
         outer = new THREE.Group() // 外层
@@ -332,11 +328,7 @@ export const addMaterialAndAction = (
 //Function to load texture corrected
 function LoadTextureCorrected(_loader: THREE.TextureLoader | DDSLoader | KTXLoader, _path: string) {
   //Load the texture
-  var texture = _loader.load(_path)
-
-  // console.log(_path, texture)
-
-  //Set repeat wrapping
+  const texture = _loader.load(_path)
   texture.wrapT = texture.wrapS = THREE.RepeatWrapping
   //Flip texture vertically
   texture.repeat.y = -1
@@ -444,9 +436,9 @@ const config = {
 }
 
 //The Cubemap path
-var r = 'images/learn-5/cubemap/'
+const r = 'images/learn-5/cubemap/'
 //The cubemap file urls
-var urls = [
+const urls = [
   r + 'posx.jpg',
   r + 'negx.jpg',
   r + 'posy.jpg',
@@ -455,19 +447,19 @@ var urls = [
   r + 'negz.jpg'
 ]
 //The Cubemap object
-var mCubeMap
+let mCubeMap
 
 //The texture loader
-var mTextureLoader
+let mTextureLoader
 
 //The dds loader
-var mDDSLoader
+let mDDSLoader
 
 //The ktx loader
-var mKTXLoader
+let mKTXLoader
 
 //The loader manager
-var mManager
+let mManager
 
 //Load the environmet cubemap from file
 mCubeMap = new THREE.CubeTextureLoader().load(urls)
@@ -483,18 +475,18 @@ mDDSLoader = new DDSLoader(mManager)
 mKTXLoader = new KTXLoader(mManager)
 
 //Get the startup colors for configurables
-var dfCol_Body = webColorToHex(config.body_colors.colors[5].value)
-var dfCol_Mirror = webColorToHex(config.mirror_colors.colors[0].value)
-var dfCol_Alloys = webColorToHex(config.wheel_colors.colors[2].value)
-var dfCol_Caliper = webColorToHex(config.caliper_colors.colors[0].value)
+const dfCol_Body = webColorToHex(config.body_colors.colors[0].value)
+const dfCol_Mirror = webColorToHex(config.mirror_colors.colors[0].value)
+const dfCol_Alloys = webColorToHex(config.wheel_colors.colors[2].value)
+const dfCol_Caliper = webColorToHex(config.caliper_colors.colors[0].value)
 
 // 默认使用dds加载器加载dds纹理
-var Tire_A02_s3tc = LoadTextureCorrected(mDDSLoader, 'images/learn-5/Tire_A02-dxt.dds')
-var Tire_N02_s3tc = LoadTextureCorrected(mDDSLoader, 'images/learn-5/Tire_N02-dxt.dds')
-var Tire_A02_pvr = LoadTextureCorrected(mKTXLoader, 'images/learn-5/Tire_A02-pvr.ktx')
-var Tire_N02_pvr = LoadTextureCorrected(mKTXLoader, 'images/learn-5/Tire_N02-pvr.ktx')
-var Tire_A02_etc1 = LoadTextureCorrected(mKTXLoader, 'images/learn-5/Tire_A02-etc1.ktx')
-var Tire_N02_etc1 = LoadTextureCorrected(mKTXLoader, 'images/learn-5/Tire_N02-etc1.ktx')
+const Tire_A02_s3tc = LoadTextureCorrected(mDDSLoader, 'images/learn-5/Tire_A02-dxt.dds')
+const Tire_N02_s3tc = LoadTextureCorrected(mDDSLoader, 'images/learn-5/Tire_N02-dxt.dds')
+const Tire_A02_pvr = LoadTextureCorrected(mKTXLoader, 'images/learn-5/Tire_A02-pvr.ktx')
+const Tire_N02_pvr = LoadTextureCorrected(mKTXLoader, 'images/learn-5/Tire_N02-pvr.ktx')
+const Tire_A02_etc1 = LoadTextureCorrected(mKTXLoader, 'images/learn-5/Tire_A02-etc1.ktx')
+const Tire_N02_etc1 = LoadTextureCorrected(mKTXLoader, 'images/learn-5/Tire_N02-etc1.ktx')
 
 // 判断用户是移动端还是PC端
 // 如果是移动端，用ktx加载器加载ktx纹理
@@ -514,54 +506,54 @@ var Tire_N02_etc1 = LoadTextureCorrected(mKTXLoader, 'images/learn-5/Tire_N02-et
 //   }
 // }
 
-// var Tire_AO01 = LoadTextureCorrected(
+// const Tire_AO01 = LoadTextureCorrected(
 //   mDDSLoader,
 //   'images/learn-5/Tire_AO01-dxt.dds'
 // )
-// var Tire_AO02 = LoadTextureCorrected(
+// const Tire_AO02 = LoadTextureCorrected(
 //   mDDSLoader,
 //   'images/learn-5/Tire_AO02-dxt.dds'
 // )
-var Phev_Hub06_AO = LoadTextureCorrected(mTextureLoader, 'images/learn-5/Phev_Hub06_AO.jpg')
-var Alpha01 = LoadTextureCorrected(mDDSLoader, 'images/learn-5/Alpha01-dxt.dds')
-// var LR_Brake_Albedo = LoadTextureCorrected(
+const Phev_Hub06_AO = LoadTextureCorrected(mTextureLoader, 'images/learn-5/Phev_Hub06_AO.jpg')
+const Alpha01 = LoadTextureCorrected(mDDSLoader, 'images/learn-5/Alpha01-dxt.dds')
+// const LR_Brake_Albedo = LoadTextureCorrected(
 //   mTextureLoader,
 //   'data/aventador/LR_Brake_Albedo.png'
 // )
-// var LR_Turn_Albedo = LoadTextureCorrected(
+// const LR_Turn_Albedo = LoadTextureCorrected(
 //   mTextureLoader,
 //   'data/aventador/LR_Turn_Albedo.png'
 // )
-// var LR_Reverse_Albedo = LoadTextureCorrected(
+// const LR_Reverse_Albedo = LoadTextureCorrected(
 //   mTextureLoader,
 //   'data/aventador/LR_Reverse_Albedo.png'
 // )
-// var LR_Generic_Normal = LoadTextureCorrected(
+// const LR_Generic_Normal = LoadTextureCorrected(
 //   mTextureLoader,
 //   'data/aventador/LR_Generic_Normal.png'
 // )
 
 //Create the necessary materials
-var Mt_Abs_Black_Gloss = new THREE.MeshStandardMaterial({
+const Mt_Abs_Black_Gloss = new THREE.MeshStandardMaterial({
   color: 0x000000,
   roughness: 0.0,
   metalness: 0.0,
   envMap: mCubeMap
 })
-var Mt_ABS_Black_Mat = new THREE.MeshStandardMaterial({
+const Mt_ABS_Black_Mat = new THREE.MeshStandardMaterial({
   color: 0x000000,
   roughness: 0.5,
   metalness: 0.5,
   envMap: mCubeMap
 })
-var Mt_Abs_White_Mat = new THREE.MeshStandardMaterial({
+const Mt_Abs_White_Mat = new THREE.MeshStandardMaterial({
   color: 0xffffff,
   roughness: 0.0,
   metalness: 0.0,
   envMap: mCubeMap
 })
 
-var Mt_AventadorAtlas = new THREE.MeshStandardMaterial({
+const Mt_AventadorAtlas = new THREE.MeshStandardMaterial({
   color: 0xffffff,
   roughness: 0.5,
   metalness: 0.5,
@@ -570,34 +562,34 @@ var Mt_AventadorAtlas = new THREE.MeshStandardMaterial({
   transparent: true
 })
 
-var Mt_Body = new THREE.MeshStandardMaterial({
+const Mt_Body = new THREE.MeshStandardMaterial({
   name: 'Mt_Body',
   color: dfCol_Body,
   roughness: 0.0,
   metalness: 0.0,
   envMap: mCubeMap
 })
-var Mt_Glass_Lens = new THREE.MeshStandardMaterial({
+const Mt_Glass_Lens = new THREE.MeshStandardMaterial({
   color: 0xffffff,
   roughness: 0.0,
   metalness: 0.25,
   envMap: mCubeMap
 })
-var Mt_BrakeCaliper = new THREE.MeshStandardMaterial({
+const Mt_BrakeCaliper = new THREE.MeshStandardMaterial({
   name: 'Mt_BrakeCaliper',
   color: dfCol_Caliper,
   roughness: 0.5,
   metalness: 0.5,
   envMap: mCubeMap
 })
-var Mt_Chrome = new THREE.MeshStandardMaterial({
+const Mt_Chrome = new THREE.MeshStandardMaterial({
   color: 0xffffff,
   roughness: 0.0,
   metalness: 1.0,
   envMap: mCubeMap
 })
 
-var Mt_Glass_Translucent = new THREE.MeshStandardMaterial({
+const Mt_Glass_Translucent = new THREE.MeshStandardMaterial({
   color: 0xffffff,
   roughness: 0.0,
   metalness: 1.0,
@@ -606,38 +598,38 @@ var Mt_Glass_Translucent = new THREE.MeshStandardMaterial({
   opacity: 0.25
 })
 
-var Mt_Interior_Black = new THREE.MeshStandardMaterial({
+const Mt_Interior_Black = new THREE.MeshStandardMaterial({
   color: 0x525252,
   roughness: 0.5,
   metalness: 0.5,
   envMap: mCubeMap
 })
-var Mt_Metal_Black_Glossy = new THREE.MeshStandardMaterial({
+const Mt_Metal_Black_Glossy = new THREE.MeshStandardMaterial({
   color: 0x000000,
   roughness: 0.1,
   metalness: 0.5,
   envMap: mCubeMap
 })
-var Mt_Metal_Brushed = new THREE.MeshStandardMaterial({
+const Mt_Metal_Brushed = new THREE.MeshStandardMaterial({
   color: 0x555555,
   roughness: 0.0,
   metalness: 1.0,
   envMap: mCubeMap
 })
-var Mt_Mirror = new THREE.MeshStandardMaterial({
+const Mt_Mirror = new THREE.MeshStandardMaterial({
   color: 0xffffff,
   roughness: 0.0,
   metalness: 1.0,
   envMap: mCubeMap
 })
-var Mt_MirrorCover = new THREE.MeshStandardMaterial({
+const Mt_MirrorCover = new THREE.MeshStandardMaterial({
   name: 'Mt_MirrorCover',
   color: dfCol_Body,
   roughness: 0.0,
   metalness: 0.0,
   envMap: mCubeMap
 })
-var Mt_Reflector_BL = new THREE.MeshStandardMaterial({
+const Mt_Reflector_BL = new THREE.MeshStandardMaterial({
   color: 0xffffff,
   roughness: 1.0,
   metalness: 0.0,
@@ -645,7 +637,7 @@ var Mt_Reflector_BL = new THREE.MeshStandardMaterial({
   // map: LR_Brake_Albedo,
   // normalMap: LR_Generic_Normal
 })
-var Mt_Reflector_RL = new THREE.MeshStandardMaterial({
+const Mt_Reflector_RL = new THREE.MeshStandardMaterial({
   color: 0xffffff,
   roughness: 1.0,
   metalness: 0.0,
@@ -653,7 +645,7 @@ var Mt_Reflector_RL = new THREE.MeshStandardMaterial({
   // map: LR_Reverse_Albedo,
   // normalMap: LR_Generic_Normal
 })
-var Mt_Reflector_TL = new THREE.MeshStandardMaterial({
+const Mt_Reflector_TL = new THREE.MeshStandardMaterial({
   color: 0xffffff,
   roughness: 1.0,
   metalness: 0.0,
@@ -661,20 +653,20 @@ var Mt_Reflector_TL = new THREE.MeshStandardMaterial({
   // map: LR_Turn_Albedo,
   // normalMap: LR_Generic_Normal
 })
-var Mt_TurnLights = new THREE.MeshStandardMaterial({
+const Mt_TurnLights = new THREE.MeshStandardMaterial({
   color: 0xffffff,
   roughness: 0.5,
   metalness: 0.5,
   envMap: mCubeMap
 })
-var Mt_AlloyWheels = new THREE.MeshStandardMaterial({
+const Mt_AlloyWheels = new THREE.MeshStandardMaterial({
   name: 'Mt_AlloyWheels',
   color: dfCol_Alloys,
   roughness: 0.1,
   metalness: 0.5,
   envMap: mCubeMap
 })
-var Mt_Tyres_s3tc = new THREE.MeshStandardMaterial({
+const Mt_Tyres_s3tc = new THREE.MeshStandardMaterial({
   color: 0x000000,
   roughness: 0.5,
   metalness: 0.5,
@@ -682,7 +674,7 @@ var Mt_Tyres_s3tc = new THREE.MeshStandardMaterial({
   map: Tire_A02_s3tc,
   normalMap: Tire_N02_s3tc
 })
-var Mt_Tyres_pvr = new THREE.MeshStandardMaterial({
+const Mt_Tyres_pvr = new THREE.MeshStandardMaterial({
   color: 0x000000,
   roughness: 0.5,
   metalness: 0.5,
@@ -690,7 +682,7 @@ var Mt_Tyres_pvr = new THREE.MeshStandardMaterial({
   map: Tire_A02_pvr,
   normalMap: Tire_N02_pvr
 })
-var Mt_Tyres_etc1 = new THREE.MeshStandardMaterial({
+const Mt_Tyres_etc1 = new THREE.MeshStandardMaterial({
   color: 0x000000,
   roughness: 0.5,
   metalness: 0.5,
@@ -699,14 +691,14 @@ var Mt_Tyres_etc1 = new THREE.MeshStandardMaterial({
   normalMap: Tire_N02_etc1
 })
 
-var Mt_Tyres_Hub = new THREE.MeshStandardMaterial({
+const Mt_Tyres_Hub = new THREE.MeshStandardMaterial({
   color: 0x929396,
   roughness: 0.1,
   metalness: 0.5,
   envMap: mCubeMap,
   map: Phev_Hub06_AO
 })
-var Mt_WindScreens = new THREE.MeshStandardMaterial({
+const Mt_WindScreens = new THREE.MeshStandardMaterial({
   color: 0x000000,
   roughness: 0.0,
   metalness: 0.0,
@@ -715,12 +707,12 @@ var Mt_WindScreens = new THREE.MeshStandardMaterial({
   opacity: 0.7
 })
 
-var transparentMaterial = new THREE.MeshBasicMaterial({
+const transparentMaterial = new THREE.MeshBasicMaterial({
   alphaMap: Alpha01,
   transparent: true,
   opacity: 0
 })
-var testMaterial = new THREE.MeshStandardMaterial({
+const testMaterial = new THREE.MeshStandardMaterial({
   color: 0x9e1068
 })
 /*eslint-disable*/
