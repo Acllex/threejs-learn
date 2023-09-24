@@ -195,10 +195,6 @@ export const addMaterialAndAction = (
       }
       if (child.name.includes('INT')) {
         switch (child.name) {
-          case 'INT_92':
-            console.log(child, 'INT_92')
-            child.material = testMaterial
-            break
           default:
             child.material = Mt_ABS_Black_Mat
             break

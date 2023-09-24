@@ -25,6 +25,9 @@ header {
 .wrapper > nav {
   display: flex;
 }
+.wrapper > nav > a {
+  margin-right: 0.8rem;
+}
 @media screen and (min-width: 768px) {
   header {
     padding: 2rem;
