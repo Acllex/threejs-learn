@@ -10,6 +10,7 @@ import { RouterLink, RouterView } from 'vue-router'
         <RouterLink to="/learn2">Demo2</RouterLink>
         <RouterLink to="/learn3">Demo3</RouterLink>
         <RouterLink to="/learn4">Demo4</RouterLink>
+        <RouterLink to="/learn5">Demo5</RouterLink>
       </nav>
     </div>
   </header>
@@ -18,17 +19,17 @@ import { RouterLink, RouterView } from 'vue-router'
 </template>
 
 <style scoped>
-header{
+header {
   padding: 1rem;
 }
-.wrapper>nav{
+.wrapper > nav {
   display: flex;
 }
 @media screen and (min-width: 768px) {
-  header{
+  header {
     padding: 2rem;
   }
-  .wrapper>nav{
+  .wrapper > nav {
     display: flex;
     flex-direction: column;
   }
